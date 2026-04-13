@@ -6,12 +6,12 @@ const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 5500;
+const mongoUri = process.env.MONGODB_URI || process.env.DB_URL;
 
-// db connection
-mongoose.connect(process.env.DB_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+if (!mongoUri) {
+    throw new Error('Missing MongoDB connection string. Set MONGODB_URI or DB_URL.');
+}
+
 const db = mongoose.connection;
 db.on('error', (error)=> console.log(error));
 db.once('open', ()=>console.log('Db Connection established successfully'));
@@ -35,4 +35,14 @@ app.set('view engine', 'ejs');
 // route prefix
 app.use("", require('./routes/routes'))
 
-app.listen(PORT, ()=>{console.log(`Server Started. Url: http://localhost:${PORT}`);});
+async function startServer() {
+    try {
+        await mongoose.connect(mongoUri);
+        app.listen(PORT, ()=>{console.log(`Server Started. Url: http://localhost:${PORT}`);});
+    } catch (error) {
+        console.error('Failed to connect to MongoDB:', error.message);
+        process.exit(1);
+    }
+}
+
+startServer();

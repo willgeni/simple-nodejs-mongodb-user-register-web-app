@@ -62,25 +62,45 @@ To get started with this project locally, follow these steps:
 3. **Install dependencies:**
 
    ```bash
-   npm install dotenv ejs express express-session mongoose multer
+   npm install
    ```
 
-4. **Set up environment variables:**
+4. **Make sure MongoDB is available:**
+
+   You need one of these before starting the app:
+
+   - A local MongoDB server listening on `127.0.0.1:27017`
+   - Docker Desktop with Docker Compose installed and running
+
+5. **Set up environment variables:**
 
    Create a `.env` file in the root directory and add the following variables:
 
    ```env
-   MONGODB_URI=<your-mongodb-uri>
-   PORT=5000
+   MONGODB_URI=mongodb://127.0.0.1:27017/registerApp
+   PORT=5500
    ```
 
-5. **Start the development server:**
+6. **Start the development server:**
 
    ```bash
-   npm start
+   npm install
+   npm run dev
    ```
 
-   The backend server will run on `http://localhost:5000` and serve the frontend application.
+   The app will run on `http://localhost:5500`.
+
+### Run with Docker
+
+If Docker Desktop is installed and running, start both the app and MongoDB with:
+
+```bash
+docker-compose up --build
+```
+
+Then open `http://localhost:5500`.
+
+If `docker-compose` is not recognized on your machine, install Docker Desktop first or use the local MongoDB route above.
 
 ## Usage
 
