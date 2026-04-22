@@ -7,14 +7,12 @@ jobs:
   ai_code_review:
     runs-on: ubuntu-latest
     steps:
-    - name: AI Code Review
-      uses: AleksandrFurmenkovOfficial/ai-code-review@v1.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        owner: ${{ github.repository_owner }}
-        repo: ${{ github.event.repository.name }}
-        pr_number: ${{ github.event.number }}
-        
-        ai_provider: 'google'
-        google_api_key: ${{ secrets.GOOGLE_API_KEY }}
-        google_model: 'gemini-1.5-flash'
+      - name: AI Code Review
+        uses: AleksandrFurmenkovOfficial/ai-code-review@v0.9
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pr_number: ${{ github.event.number }}
+          ai_provider: 'google'
+          google_api_key: ${{ secrets.GOOGLE_API_KEY }}
