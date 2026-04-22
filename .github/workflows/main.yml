@@ -1,13 +1,11 @@
 name: RegisterApp CI Pipeline
 on:
   pull_request:
-    types: [ opened, synchronize ]
+    types: [opened, synchronize]
+
 jobs:
-  ai-code-review:
+  ai_code_review:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - name: AI Code Review
         uses: AleksandrFurmenkovOfficial/ai-code-review@v0.9
