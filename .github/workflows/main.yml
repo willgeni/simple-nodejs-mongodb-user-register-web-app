@@ -16,5 +16,5 @@ jobs:
         pr_number: ${{ github.event.number }}
         
         ai_provider: 'google'
-        google_api_key: ${{ secrets.GEMINI_API_KEY }}
+        google_api_key: ${{ secrets.GOOGLE_API_KEY }}
         google_model: 'gemini-3-flash-preview'
