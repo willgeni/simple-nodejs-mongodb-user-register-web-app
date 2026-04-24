@@ -4,17 +4,33 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  ai_code_review:
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v4
+      
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '18'
+          
+  #     - name: Install dependencies
+  #       run: npm install
+        
+  #     - name: Run Tests
+  #       run: npm test
+
+  ai-code-review:
+    # needs: test
     runs-on: ubuntu-latest
     steps:
-    - name: AI Code Review
-      uses: AleksandrFurmenkovOfficial/ai-code-review@v1.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        owner: ${{ github.repository_owner }}
-        repo: ${{ github.event.repository.name }}
-        pr_number: ${{ github.event.number }}
-        
-        ai_provider: 'google'
-        google_api_key: ${{ secrets.GOOGLE_API_KEY }}
-        google_model: 'gemini-1.5-flash'
+      - name: AI Code Review
+        uses: AleksandrFurmenkovOfficial/ai-code-review@v1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pr_number: ${{ github.event.number }}
+          ai_provider: 'google'
+          google_api_key: ${{ secrets.GEMINI_API_KEY }}
