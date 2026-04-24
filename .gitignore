@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -31,4 +32,39 @@ logs/
 *.log
 
 # Misc
+=======
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Misc
+>>>>>>> 2a9f43ff625de901366142961b13e518987495a7
 .cache/
