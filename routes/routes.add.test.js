@@ -53,7 +53,8 @@ describe('POST /add handler', () => {
     expect(saveMock).toHaveBeenCalledTimes(1);
     expect(req.session.message).toEqual({
       type: 'success',
-      message: 'User added successfully',
+    //   message: 'User added successfully',
+    message: 'User added successfully!', // Intentional error
     });
     expect(res.redirect).toHaveBeenCalledWith('/');
   });
