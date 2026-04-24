@@ -30,3 +30,16 @@ jobs:
           pr_number: ${{ github.event.number }}
           ai_provider: 'google'
           google_api_key: ${{ secrets.GOOGLE_API_KEY }}
+
+  run_tests:
+    needs: ai_code_review
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test -- --runInBand
